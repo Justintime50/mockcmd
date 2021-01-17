@@ -13,7 +13,7 @@ clean:
 
 ## build - Build the project
 build:
-	go build
+	go build -o dist/mockcmd
 
 ## test - Test the project
 test:

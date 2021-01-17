@@ -35,6 +35,12 @@ See this packages `example.go` and `example_test.go` files for a complete exampl
 Below is an example on how to setup your CMD command in a way it can be easily mocked:
 
 ```go
+// Pass in `exec.Command` as the context for your real command
+func main() {
+	out, _ := mockedCmd(exec.Command)
+	fmt.Println(out.String())
+}
+
 func mockedCmd(cmdContext mockcmd.ExecContext) (*bytes.Buffer, error) {
 	cmd := cmdContext("echo", "Hello World")
 	var outb bytes.Buffer
