@@ -8,12 +8,12 @@ install:
 
 ## clean - Clean the project
 clean:
-	rm dist
+	rm -rf dist
 	rm $(go env GOPATH)/bin/mockcmd
 
 ## build - Build the project
 build:
-	go build -o dist/mockcmd
+	go build ./mockcmd
 
 ## test - Test the project
 test:
