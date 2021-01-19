@@ -8,6 +8,8 @@ Mocks the `exec.Command` interface in Golang.
 [![Coverage Status](https://coveralls.io/repos/github/Justintime50/mockcmd/badge.svg?branch=main)](https://coveralls.io/github/Justintime50/mockcmd?branch=main)
 [![Licence](https://img.shields.io/github/license/justintime50/mockcmd)](LICENSE)
 
+<img src="assets/showcase.png" alt="Showcase">
+
 </div>
 
 Mocking the `exec.Command` interface in Golang is an absolute pain. You run the risk of running system commands in a unit test context or are required to build out a custom solution to run your commands in an isolated and safe manner which still isn't ideal. Enter `mockcmd`, the easy and safe way to mock your `exec.Command` functions.
@@ -119,3 +121,4 @@ make lint
 ## Attribution
 
 * Inspired by the articles by [Jamie Thompson](https://jamiethompson.me/posts/Unit-Testing-Exec-Command-In-Golang) and [Nate Finch](https://npf.io/2015/06/testing-exec-command/)
+* Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
