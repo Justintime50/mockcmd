@@ -4,7 +4,7 @@
 
 Mocks the `exec.Command` interface in Golang.
 
-[![Build](https://github.com/Justintime50/mockcmd/workflows/build/badge.svg)](https://github.com/Justintime50/mockcmd/actions)
+[![Build Status](https://github.com/Justintime50/mockcmd/workflows/build/badge.svg)](https://github.com/Justintime50/mockcmd/actions)
 [![Coverage Status](https://coveralls.io/repos/github/Justintime50/mockcmd/badge.svg?branch=main)](https://coveralls.io/github/Justintime50/mockcmd?branch=main)
 [![Licence](https://img.shields.io/github/license/justintime50/mockcmd)](LICENSE)
 
