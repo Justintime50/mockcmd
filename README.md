@@ -20,15 +20,20 @@ Mocking the `exec.Command` interface in Golang is an absolute pain. You run the 
 go get github.com/justintime50/mockcmd
 ```
 
-Installing `mockcmd` will make the following packages available to you:
+Once `mockcmd` is installed in your project, simply import it:
 
-```
-github.com/justintime50/mockcmd/mockcmd
+```go
+package yours
+
+import (
+	"github.com/justintime50/mockcmd/mockcmd"
+	...
+)
+
+...
 ```
 
 ## Usage
-
-See this packages `example.go` and `example_test.go` files for a complete example.
 
 **Your Command**
 
@@ -37,11 +42,11 @@ Below is an example on how to setup your CMD command in a way it can be easily m
 ```go
 // Pass in `exec.Command` as the context for your real command
 func main() {
-	out, _ := mockedCmd(exec.Command)
+	out, _ := myCommandFunction(exec.Command)
 	fmt.Println(out.String())
 }
 
-func mockedCmd(cmdContext mockcmd.ExecContext) (*bytes.Buffer, error) {
+func myCommandFunction(cmdContext mockcmd.ExecContext) (*bytes.Buffer, error) {
 	cmd := cmdContext("echo", "Hello World")
 	var outb bytes.Buffer
 	cmd.Stdout = &outb
@@ -61,12 +66,12 @@ Below is an example on how to setup your test to mock your command from above:
 
 ```go
 // Mock a success and failure response from exec.Command
-func TestExampleSuccess(t *testing.T) {
+func TestMyCommandFunctionSuccess(t *testing.T) {
 	stdout, err := mockedCmd(mockcmd.MockExecSuccess)
 	mockcmd.Success(t, stdout, err)
 }
 
-func TestExampleFailure(t *testing.T) {
+func TestMyCommandFunctionFailure(t *testing.T) {
 	_, err := mockedCmd(mockcmd.MockExecFailure)
 	mockcmd.Fail(t, err)
 }

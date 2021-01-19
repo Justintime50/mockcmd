@@ -36,26 +36,38 @@ func MockExecFailure(command string, args ...string) *exec.Cmd {
 	return cmd
 }
 
-// Fail handles error logging on a cmd test you expect to fail
-func Fail(t *testing.T, err error) {
-	if err == nil {
-		t.Errorf("Expected error due to shell command exiting with non-zero exit code")
-	}
-}
-
 // Success handles logging on a cmd test you expect to succeed
-func Success(t *testing.T, stdout *bytes.Buffer, err error) {
+func Success(t *testing.T, stdout *bytes.Buffer, err error) bool {
+	// Ensure the command was indeed successful
 	if err != nil {
-		t.Error(err)
-		return
+		// Don't throw errors on internal mockcmd tests
+		if os.Getenv("MOCKCMD_INTERNAL_TEST") != "1" {
+			t.Error(err)
+		}
+		return false
 	}
-
-	// TODO: Assert the process was called with the right commands/args
 
 	// Check to make sure the stdout is returned properly
 	// Note: value matching is not checked since the command is not run
 	stdoutStr := stdout.String()
 	if stdoutStr != mockStdout {
-		t.Errorf("stdout mismatch:\n%s\n vs \n%s", stdoutStr, mockStdout)
+		// Don't throw errors on internal mockcmd tests
+		if os.Getenv("MOCKCMD_INTERNAL_TEST") != "1" {
+			t.Errorf("stdout mismatch:\n%s\n vs \n%s", stdoutStr, mockStdout)
+		}
+		return false
 	}
+	return true
+}
+
+// Fail handles error logging on a cmd test you expect to fail
+func Fail(t *testing.T, err error) bool {
+	if err == nil {
+		// Don't throw errors on internal mockcmd tests
+		if os.Getenv("MOCKCMD_INTERNAL_TEST") != "1" {
+			t.Errorf("Expected error due to shell command exiting with non-zero exit code")
+		}
+		return false
+	}
+	return true
 }
