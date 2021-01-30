@@ -69,12 +69,12 @@ Below is an example on how to setup your test to mock your command from above:
 ```go
 // Mock a success and failure response from exec.Command
 func TestMyCommandFunctionSuccess(t *testing.T) {
-	stdout, err := mockedCmd(mockcmd.MockExecSuccess)
+	stdout, err := myCommandFunction(mockcmd.MockExecSuccess)
 	mockcmd.Success(t, stdout, err)
 }
 
 func TestMyCommandFunctionFailure(t *testing.T) {
-	_, err := mockedCmd(mockcmd.MockExecFailure)
+	_, err := myCommandFunction(mockcmd.MockExecFailure)
 	mockcmd.Fail(t, err)
 }
 
