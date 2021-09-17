@@ -8,7 +8,7 @@ Mocks the `exec.Command` interface in Golang.
 [![Coverage Status](https://coveralls.io/repos/github/Justintime50/mockcmd/badge.svg?branch=main)](https://coveralls.io/github/Justintime50/mockcmd?branch=main)
 [![Licence](https://img.shields.io/github/license/justintime50/mockcmd)](LICENSE)
 
-<img src="assets/showcase.png" alt="Showcase">
+<img src="https://raw.githubusercontent.com/justintime50/assets/main/src/mockcmd/showcase.png" alt="Showcase">
 
 </div>
 
@@ -121,4 +121,3 @@ make lint
 ## Attribution
 
 * Inspired by the articles by [Jamie Thompson](https://jamiethompson.me/posts/Unit-Testing-Exec-Command-In-Golang) and [Nate Finch](https://npf.io/2015/06/testing-exec-command/)
-* Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
