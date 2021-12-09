@@ -6,9 +6,10 @@ Mocks the `exec.Command` interface in Golang.
 
 [![Build Status](https://github.com/Justintime50/mockcmd/workflows/build/badge.svg)](https://github.com/Justintime50/mockcmd/actions)
 [![Coverage Status](https://coveralls.io/repos/github/Justintime50/mockcmd/badge.svg?branch=main)](https://coveralls.io/github/Justintime50/mockcmd?branch=main)
-[![Licence](https://img.shields.io/github/license/justintime50/mockcmd)](LICENSE)
+[![Version](https://img.shields.io/github/v/release/Justintime50/mockcmd)](https://github.com/Justintime50/mockcmd/releases)
+[![Licence](https://img.shields.io/github/license/Justintime50/mockcmd)](LICENSE)
 
-<img src="https://raw.githubusercontent.com/justintime50/assets/main/src/mockcmd/showcase.png" alt="Showcase">
+<img src="https://raw.githubusercontent.com/Justintime50/assets/main/src/mockcmd/showcase.png" alt="Showcase">
 
 </div>
 
@@ -19,20 +20,7 @@ Mocking the `exec.Command` interface in Golang is an absolute pain. You run the 
 ## Install
 
 ```bash
-go get github.com/justintime50/mockcmd
-```
-
-Once `mockcmd` is installed in your project, simply import it:
-
-```go
-package yours
-
-import (
-	"github.com/justintime50/mockcmd/mockcmd"
-	...
-)
-
-...
+go get github.com/Justintime50/mockcmd
 ```
 
 ## Usage
@@ -42,6 +30,12 @@ import (
 Below is an example on how to setup your CMD command in a way it can be easily mocked:
 
 ```go
+package mypackage
+
+import (
+	"github.com/Justintime50/mockcmd/mockcmd"
+)
+
 // Pass in `exec.Command` as the context for your real command
 func main() {
 	out, _ := myCommandFunction(exec.Command)
@@ -99,23 +93,8 @@ func TestMockProcessFailure(t *testing.T) {
 ## Development
 
 ```bash
-# Build the project
-make build
-
-# Install the project globally from source
-make install
-
-# Clean the executables
-make clean
-
-# Test the project
-make test
-
-## Get test coverage
-make coverage
-
-# Lint the project (requires golangci-lint be installed)
-make lint
+# Get a comprehensive list of development tools
+make help
 ```
 
 ## Attribution

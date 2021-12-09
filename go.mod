@@ -1,3 +1,3 @@
 module github.com/justintime50/mockcmd
 
-go 1.15
+go 1.16
