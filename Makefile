@@ -1,4 +1,6 @@
 PROJECT_NAME := mockcmd
+PROJECT_PATH := $$(go env GOPATH)/bin/$(PROJECT_NAME)
+DIST_PATH := dist
 
 ## help - Display help about make targets for this Makefile
 help:
@@ -6,12 +8,12 @@ help:
 
 ## build - Build the project
 build:
-	go build ./$(PROJECT_NAME)
+	cd $(PROJECT_NAME) && go build -o ../$(DIST_PATH)/$(PROJECT_NAME)
 
 ## clean - Clean the project
 clean:
-	rm -rf dist
-	rm $(go env GOPATH)/bin/$(PROJECT_NAME)
+	rm -rf $(DIST_PATH)
+	rm $(PROJECT_PATH)
 
 ## coverage - Get test coverage and open it in a browser
 coverage: 
@@ -19,7 +21,7 @@ coverage:
 
 ## install - Install globally from source
 install:
-	go build -o $(go env GOPATH)/bin/$(PROJECT_NAME)
+	cd $(PROJECT_NAME) && go build -o $(PROJECT_PATH)
 
 ## lint - Lint the project
 lint:
