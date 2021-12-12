@@ -10,6 +10,8 @@ import (
 	"testing"
 )
 
+// NOTE: We don't test the `if os.Getenv("MOCKCMD_INTERNAL_TEST") != "1"` blocks because then tests fail due to calling `t.Error()`
+
 func TestMockExecSuccess(t *testing.T) {
 	mockExecSuccess := MockExecSuccess("echo", "Hello World")
 
