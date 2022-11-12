@@ -21,7 +21,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
       - name: Run unit tests
-        run: make test
+        run: make coverage
       - name: Install goveralls
         env:
           GO111MODULE: off
