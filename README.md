@@ -25,7 +25,7 @@ go get github.com/Justintime50/mockcmd
 
 ## Usage
 
-**Your Command**
+### Your Command
 
 Below is an example on how to setup your CMD command in a way it can be easily mocked:
 
@@ -33,60 +33,60 @@ Below is an example on how to setup your CMD command in a way it can be easily m
 package mypackage
 
 import (
-	"github.com/Justintime50/mockcmd/mockcmd"
+    "github.com/Justintime50/mockcmd/mockcmd"
 )
 
 // Pass in `exec.Command` as the context for your real command
 func main() {
-	out, _ := myCommandFunction(exec.Command)
-	fmt.Println(out.String())
+    out, _ := myCommandFunction(exec.Command)
+    fmt.Println(out.String())
 }
 
 func myCommandFunction(cmdContext mockcmd.ExecContext) (*bytes.Buffer, error) {
-	cmd := cmdContext("echo", "Hello World")
-	var outb bytes.Buffer
-	cmd.Stdout = &outb
-	err := cmd.Run()
-	if err != nil {
-		fmt.Printf("Failed to run command: %s", err)
-		return nil, err
-	}
+    cmd := cmdContext("echo", "Hello World")
+    var outb bytes.Buffer
+    cmd.Stdout = &outb
+    err := cmd.Run()
+    if err != nil {
+        fmt.Printf("Failed to run command: %s", err)
+        return nil, err
+    }
 
-	return &outb, nil
+    return &outb, nil
 }
 ```
 
-**Your Test**
+### Your Test
 
 Below is an example on how to setup your test to mock your command from above:
 
 ```go
 // Mock a success and failure response from exec.Command
 func TestMyCommandFunctionSuccess(t *testing.T) {
-	stdout, err := myCommandFunction(mockcmd.MockExecSuccess)
-	mockcmd.Success(t, stdout, err)
+    stdout, err := myCommandFunction(mockcmd.MockExecSuccess)
+    mockcmd.Success(t, stdout, err)
 }
 
 func TestMyCommandFunctionFailure(t *testing.T) {
-	_, err := myCommandFunction(mockcmd.MockExecFailure)
-	mockcmd.Fail(t, err)
+    _, err := myCommandFunction(mockcmd.MockExecFailure)
+    mockcmd.Fail(t, err)
 }
 
 // The following functions are required in each package that will mock an exec.Command
 // Do not alter the following when placed into your package_test.go file
 func TestMockProcessSuccess(t *testing.T) {
-	if os.Getenv("GO_TEST_PROCESS") != "1" {
-		return
-	}
-	os.Stdout.WriteString("mocked Stdout")
-	os.Exit(0)
+    if os.Getenv("GO_TEST_PROCESS") != "1" {
+        return
+    }
+    os.Stdout.WriteString("mocked Stdout")
+    os.Exit(0)
 }
 
 func TestMockProcessFailure(t *testing.T) {
-	if os.Getenv("GO_TEST_PROCESS") != "1" {
-		return
-	}
-	os.Exit(1)
+    if os.Getenv("GO_TEST_PROCESS") != "1" {
+        return
+    }
+    os.Exit(1)
 }
 ```
 
@@ -99,4 +99,4 @@ make help
 
 ## Attribution
 
-* Inspired by the articles by [Jamie Thompson](https://jamiethompson.me/posts/Unit-Testing-Exec-Command-In-Golang) and [Nate Finch](https://npf.io/2015/06/testing-exec-command/)
+- Inspired by the articles by [Jamie Thompson](https://jamiethompson.me/posts/Unit-Testing-Exec-Command-In-Golang) and [Nate Finch](https://npf.io/2015/06/testing-exec-command/)

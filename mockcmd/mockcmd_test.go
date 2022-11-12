@@ -11,6 +11,7 @@ import (
 )
 
 // NOTE: We don't test the `if os.Getenv("MOCKCMD_INTERNAL_TEST") != "1"` blocks because then tests fail due to calling `t.Error()`
+// As such, we won't be able to reach 100% coverage because we can't run the couple lines that are unreachable in a test setting
 
 func TestMockExecSuccess(t *testing.T) {
 	mockExecSuccess := MockExecSuccess("echo", "Hello World")

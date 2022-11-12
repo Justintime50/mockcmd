@@ -40,7 +40,7 @@ func MockExecFailure(command string, args ...string) *exec.Cmd {
 func Success(t *testing.T, stdout *bytes.Buffer, err error) bool {
 	// Ensure the command was indeed successful
 	if err != nil {
-		// Don't throw errors on internal mockcmd tests
+		// Don't throw errors on internal mockcmd tests for this package
 		if os.Getenv("MOCKCMD_INTERNAL_TEST") != "1" {
 			t.Error(err)
 		}
@@ -51,7 +51,7 @@ func Success(t *testing.T, stdout *bytes.Buffer, err error) bool {
 	// Note: value matching is not checked since the command is not run
 	stdoutStr := stdout.String()
 	if stdoutStr != mockStdout {
-		// Don't throw errors on internal mockcmd tests
+		// Don't throw errors on internal mockcmd tests for this package
 		if os.Getenv("MOCKCMD_INTERNAL_TEST") != "1" {
 			t.Errorf("stdout mismatch:\n%s\n vs \n%s", stdoutStr, mockStdout)
 		}
@@ -63,7 +63,7 @@ func Success(t *testing.T, stdout *bytes.Buffer, err error) bool {
 // Fail handles error logging on a cmd test you expect to fail
 func Fail(t *testing.T, err error) bool {
 	if err == nil {
-		// Don't throw errors on internal mockcmd tests
+		// Don't throw errors on internal mockcmd tests for this package
 		if os.Getenv("MOCKCMD_INTERNAL_TEST") != "1" {
 			t.Errorf("Expected error due to shell command exiting with non-zero exit code")
 		}
