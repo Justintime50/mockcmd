@@ -19,7 +19,7 @@ Mocking the `exec.Command` interface in Golang is an absolute pain. You run the 
 
 ## Install
 
-```bash
+```shell
 go get github.com/Justintime50/mockcmd
 ```
 
@@ -94,7 +94,7 @@ func TestMockProcessFailure(t *testing.T) {
 
 ```bash
 # Get a comprehensive list of development tools
-make help
+just --list
 ```
 
 ## Attribution
