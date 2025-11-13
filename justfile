@@ -16,7 +16,7 @@ coverage:
 
 # Install globally from source
 install:
-    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b {{GO_BIN}} v1.60.3
+    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b {{GO_BIN}} v2.6.1
     go mod vendor
 
 # Lint the project

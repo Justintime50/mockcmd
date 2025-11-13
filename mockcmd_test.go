@@ -60,9 +60,8 @@ func TestFailTrue(t *testing.T) {
 
 // TestFailFalse checks that a failure state was unsuccessful
 func TestFailFalse(t *testing.T) {
-	os.Setenv("MOCKCMD_INTERNAL_TEST", "1")
-	nilErr := nilErr()
-	fail := Fail(t, nilErr)
+	err := os.Setenv("MOCKCMD_INTERNAL_TEST", "1")
+	fail := Fail(t, err)
 	expectedReturn := false
 	if fail != expectedReturn {
 		t.Errorf("Fail should return %s because no error was returned.", strconv.FormatBool(expectedReturn))

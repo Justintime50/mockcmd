@@ -5,7 +5,7 @@
 Mocks the `exec.Command` interface in Golang.
 
 [![Build Status](https://github.com/Justintime50/mockcmd/workflows/build/badge.svg)](https://github.com/Justintime50/mockcmd/actions)
-[![Coverage Status](https://coveralls.io/repos/github/Justintime50/mockcmd/badge.svg?branch=main)](https://coveralls.io/github/Justintime50/mockcmd?branch=main)
+[![Coverage Status](https://img.shields.io/codecov/c/github/justintime50/mockcmd)](https://app.codecov.io/github/Justintime50/mockcmd)
 [![Version](https://img.shields.io/github/v/release/Justintime50/mockcmd)](https://github.com/Justintime50/mockcmd/releases)
 [![Licence](https://img.shields.io/github/license/Justintime50/mockcmd)](LICENSE)
 
@@ -20,7 +20,7 @@ Mocking the `exec.Command` interface in Golang is an absolute pain. You run the 
 ## Install
 
 ```shell
-go get github.com/Justintime50/mockcmd
+go get github.com/justintime50/mockcmd
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ Below is an example on how to setup your CMD command in a way it can be easily m
 package mypackage
 
 import (
-    "github.com/Justintime50/mockcmd/mockcmd"
+    "github.com/justintime50/mockcmd"
 )
 
 // Pass in `exec.Command` as the context for your real command
